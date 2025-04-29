@@ -12,6 +12,9 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
+        twitter: {
+          400: '#26a7de',
+        },
         blue: {
           400: '#2589FE',
           500: '#0070F3',
