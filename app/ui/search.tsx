@@ -2,14 +2,27 @@
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { log } from 'console';
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const [input, setInput] = useState<string>('');
+  const searhParams = useSearchParams();
   const handleIput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
+    const value = e.target.value;
+    const params = new URLSearchParams(searhParams);
+    if (value) {
+      params.set('query', value);
+      params.set('quer2', value);
+    } else {
+      params.delete('query');
+    }
+    console.log('search params:', Array.from(params.entries()));
+
+    setInput(value);
   };
   useEffect(() => {
-    console.log(input);
+    // console.log(input);
   }, [input]);
   return (
     <div className="relative flex flex-1 flex-shrink-0">
